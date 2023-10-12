@@ -5,8 +5,8 @@ import { Luckiest_Guy } from "next/font/google";
 const font = Luckiest_Guy({ weight: "400", subsets: ["latin"] });
 
 export const metadata: Metadata = {
-	title: "Booo",
-	description: "Your Custom Boo Page!",
+	title: "Booo! 👻",
+	description: "You've Been Booo'd! Check out by who!",
 };
 
 export default function RootLayout({
