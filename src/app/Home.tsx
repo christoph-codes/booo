@@ -1,10 +1,10 @@
 "use client";
+
 import Ghost from "@/components/Ghost";
 import Image from "next/image";
 import {
 	EmailShareButton,
 	FacebookShareButton,
-	OKShareButton,
 	TwitterShareButton,
 } from "react-share";
 import {
@@ -16,6 +16,7 @@ import {
 const Home = () => {
 	const name = "Jax & Kennedy";
 	const image = "/booImage.jpg";
+
 	return (
 		<div className="text-center">
 			<h1 className="md:text-huge/[120px] text-[110px]/[100px] text-orange mb-8">
@@ -48,28 +49,33 @@ const Home = () => {
 				Happy Halloween!
 			</p>
 			<p className="text-xl mb-4">Share:</p>
-			<div className="flex justify-center items-center gap-x-4">
-				<FacebookShareButton
-					quote={`Check out who Boo'd me!`}
-					hashtag="#Booo #HappyHalloween"
-					url={window.location.href}
-				>
-					<BiLogoFacebookCircle className="text-purple" size={64} />
-				</FacebookShareButton>
-				<TwitterShareButton
-					title="Check out who Boo'd me!"
-					url={window.location.href}
-					hashtags={["Booo", "HappyHalloween"]}
-				>
-					<BiLogoTwitter className="text-purple" size={64} />
-				</TwitterShareButton>
-				<EmailShareButton
-					subject="Check out who Boo'd me!"
-					url={window.location.href}
-				>
-					<BiMailSend className="text-purple" size={64} />
-				</EmailShareButton>
-			</div>
+			{typeof window !== "undefined" && (
+				<div className="flex justify-center items-center gap-x-4">
+					<FacebookShareButton
+						quote={`Check out who Boo'd me!`}
+						hashtag="#Booo #HappyHalloween"
+						url={window.location.href}
+					>
+						<BiLogoFacebookCircle
+							className="text-purple"
+							size={64}
+						/>
+					</FacebookShareButton>
+					<TwitterShareButton
+						title="Check out who Boo'd me!"
+						url={window.location.href}
+						hashtags={["Booo", "HappyHalloween"]}
+					>
+						<BiLogoTwitter className="text-purple" size={64} />
+					</TwitterShareButton>
+					<EmailShareButton
+						subject="Check out who Boo'd me!"
+						url={window.location.href}
+					>
+						<BiMailSend className="text-purple" size={64} />
+					</EmailShareButton>
+				</div>
+			)}
 		</div>
 	);
 };
