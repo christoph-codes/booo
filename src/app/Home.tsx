@@ -52,7 +52,7 @@ const Home = () => {
 			{typeof window !== "undefined" && (
 				<div className="flex justify-center items-center gap-x-4">
 					<FacebookShareButton
-						quote={`Check out who Boo'd me!`}
+						title="Check out who Boo'd me!"
 						hashtag="#Booo #HappyHalloween"
 						url={window.location.href}
 					>
