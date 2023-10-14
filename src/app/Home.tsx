@@ -42,6 +42,7 @@ const Home = () => {
 					height="480"
 					controls
 					controlsList="nodownload"
+					autoPlay
 				>
 					<source src={video} type="video/mp4" />
 					Your browser does not support the video tag.
@@ -90,8 +91,8 @@ const Home = () => {
 				</>
 			)}
 			<p className="text-xl mt-8">
-				Page created <BiSolidHeart className="inline text-orange" />{" "}
-				love by <br />
+				Page created with{" "}
+				<BiSolidHeart className="inline text-orange" /> love by <br />
 				<a
 					className="hover:text-purple text-orange transition ease-in-out duration-300"
 					href="https://thekirkconcept.com"
