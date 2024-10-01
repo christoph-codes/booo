@@ -14,7 +14,14 @@ h1,h2,h3,h4,h5,h6 {
 	font-family: var(--font-luckiest);
 	line-height: 1.2;
 }
+h1 {
+	font-size: 2.5rem;
+}
+h2 {
+	font-size: 1rem;
+}
 p, li, a {
 	@apply text-gray;
 	font-family: var(--font-roboto);
+	font-size: 16px;
 }
