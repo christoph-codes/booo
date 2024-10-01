@@ -9,10 +9,10 @@ const SignupInvite = () => {
 		router.push("/signup");
 	};
 	return (
-		<section className="py-16 bg-purple">
-			<div className="container mx-auto text-center space-y-3">
+		<section className="py-16 bg-purple rounded-xl">
+			<div className="container mx-auto text-center">
 				<h1 className="text-white">Sounds easy right?</h1>
-				<p>Spookify Your Messages in 3 Easy Steps!</p>
+				<p className="mb-4">Spookify Your Messages in 3 Easy Steps!</p>
 				<Button onClick={handleSignup}>Create your booo!</Button>
 			</div>
 		</section>
