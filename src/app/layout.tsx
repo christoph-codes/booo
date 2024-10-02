@@ -16,7 +16,9 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang="en">
-			<body className={`${roboto.variable} ${luckiest.variable}`}>
+			<body
+				className={`${roboto.variable} ${luckiest.variable} bg-pattern bg-black bg-center`}
+			>
 				<Nav />
 				{children}
 				<Footer />

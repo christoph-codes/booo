@@ -10,11 +10,15 @@ const config: Config = {
 	theme: {
 		extend: {
 			colors: {
+				black: "#000000",
 				purple: "#3D1AC6",
 				purple_hover: "#281085",
+				purple_dark: "#04040e",
 				orange: "#FF5823",
 				orange_hover: "#CB3506",
 				gray: "#BFBFBF",
+				gray_dark: "#383838",
+				gray_medium: "#929292",
 				white: "#FFFFFF",
 				white_hover: "#F2F2F2",
 			},
