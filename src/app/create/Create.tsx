@@ -55,9 +55,9 @@ const Create = () => {
 					<Tag className="bg-gray_dark text-gray_medium mx-auto">Preview</Tag>
 					{(name || message || video) && (
 						<p className="text-center text-md">
-							Below will be a sneak peek of your page! It may look a little
+							{`Below will be a sneak peek of your page! It may look a little
 							different once it's live, but focus on confirming the awesome
-							content you've added. Get ready to share it!
+							content you've added. Get ready to share it!`}
 						</p>
 					)}
 					<HR />

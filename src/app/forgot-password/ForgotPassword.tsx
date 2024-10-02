@@ -46,7 +46,7 @@ const ForgotPassword = () => {
 						Remember Your Password? Login
 					</Button>
 					<Button onClick={handleSignup} variant="ghost">
-						Haven't joined the fun yet. Sign up now!
+						{`Haven't joined the fun yet. Sign up now!`}
 					</Button>
 				</div>
 			</Container>
