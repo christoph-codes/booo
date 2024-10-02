@@ -14,7 +14,7 @@ const buttonClasses = {
 	primary:
 		"bg-orange hover:bg-orange_hover border-orange hover:border-orange_hover",
 	secondary: "bg-transparent hover:border-orange_hover border-orange",
-	ghost: "bg-transparent",
+	ghost: "bg-transparent border-transparent",
 };
 
 export function Button({
