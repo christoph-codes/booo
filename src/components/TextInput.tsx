@@ -4,6 +4,7 @@ import {
 	InputHTMLAttributes,
 	SetStateAction,
 } from "react";
+import HelperText from "./HelperText";
 
 export type TextInputProps = {
 	label?: string;
@@ -12,6 +13,7 @@ export type TextInputProps = {
 	placeholder?: string;
 	onChange?: Dispatch<SetStateAction<string>>;
 	type?: "text" | "password" | "email";
+	helperText?: string;
 	rest?: InputHTMLAttributes<HTMLInputElement>;
 };
 
@@ -22,6 +24,7 @@ const TextInput = ({
 	placeholder,
 	onChange,
 	type = "text",
+	helperText,
 	...rest
 }: TextInputProps) => {
 	return (
@@ -41,6 +44,7 @@ const TextInput = ({
 				placeholder={placeholder}
 				className="rounded-lg bg-gray_dark p-3 appearance-none text-white placeholder:text-gray_medium font-body"
 			/>
+			{helperText && <HelperText>{helperText}</HelperText>}
 		</fieldset>
 	);
 };
