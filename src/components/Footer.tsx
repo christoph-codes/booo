@@ -1,9 +1,10 @@
 import { BiSolidHeart } from "react-icons/bi";
+import Container from "./Container";
 
 const Footer = () => {
 	return (
-		<footer className="p-2">
-			<p className="text-xl mt-8 text-center text-gray-500">
+		<footer className="p-4 rounded-t-lg bg-purple_dark mt-16">
+			<p className="text-xl text-center text-gray-500">
 				Page created with <BiSolidHeart className="inline text-orange" /> love
 				by{" "}
 				<a
