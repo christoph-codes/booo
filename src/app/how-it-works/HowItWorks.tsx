@@ -10,13 +10,13 @@ const HowItWorks = () => {
 			description="Have fun creating a fun message for this season with friends and
 					family from anywhere in 3 easy steps!"
 		>
-			<Container>
+			<Container className="space-y-8">
 				<Image
 					src="/how_it_works_hero.png"
 					width={1180}
 					height={365}
 					alt="How it works Hero Banner"
-					className="w-full"
+					className="w-full rounded-xl"
 				/>
 				<section className="grid gap-6 grid-cols-3 py-8">
 					<div className="flex flex-col gap-3">
@@ -26,7 +26,7 @@ const HowItWorks = () => {
 							width={365}
 							height={134}
 							alt="How it works Step 1 Upload video"
-							className="w-full"
+							className="w-full rounded-xl"
 						/>
 						<p>Record or upload your festive video in just a few clicks.</p>
 					</div>
@@ -37,7 +37,7 @@ const HowItWorks = () => {
 							width={365}
 							height={134}
 							alt="How it works Step 2 Enter details"
-							className="w-full"
+							className="w-full rounded-xl"
 						/>
 						<p>
 							Add your name and a spooky greeting to go along with your video.
@@ -50,7 +50,7 @@ const HowItWorks = () => {
 							width={365}
 							height={134}
 							alt="How it works Step 3 Share"
-							className="w-full"
+							className="w-full rounded-xl"
 						/>
 						<p>
 							Instantly get a custom link and QR code to share with friends and
