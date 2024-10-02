@@ -32,7 +32,6 @@ const Login = () => {
 		>
 			<Container size="md">
 				<form onSubmit={login} className="flex flex-col gap-4">
-					{email && <p>Email: {email}</p>}
 					<TextInput
 						label="Email"
 						name="email"
@@ -40,7 +39,6 @@ const Login = () => {
 						type="email"
 						onChange={setEmail}
 					/>
-					{password && <p>Password: {password}</p>}
 					<TextInput
 						label="Password"
 						name="password"

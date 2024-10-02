@@ -31,7 +31,6 @@ const ForgotPassword = () => {
 		>
 			<Container size="md">
 				<form onSubmit={submit} className="flex flex-col gap-4">
-					{email && <p>Email: {email}</p>}
 					<TextInput
 						label="Email"
 						name="email"
