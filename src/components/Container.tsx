@@ -1,8 +1,27 @@
-import { PropsWithChildren } from "react";
+import { ReactNode } from "react";
+import { twMerge } from "tailwind-merge";
 
-const Container = ({ children }: PropsWithChildren) => {
+export type ContainerProps = {
+	size?: "sm" | "md" | "lg";
+	children: ReactNode;
+	className?: string;
+};
+
+const Container = ({ children, size, className }: ContainerProps) => {
 	return (
-		<div className="container mx-auto space-y-4 px-2 md:px-6">{children}</div>
+		<div
+			className={twMerge(
+				"container mx-auto px-2 md:px-6",
+				className,
+				size === "sm"
+					? "max-w-md"
+					: size === "md"
+					? "max-w-lg"
+					: size === "lg" && "max-w-5xl"
+			)}
+		>
+			{children}
+		</div>
 	);
 };
 
