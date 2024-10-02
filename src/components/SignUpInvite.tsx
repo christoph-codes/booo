@@ -6,7 +6,7 @@ import { Button } from "./Button";
 const SignupInvite = () => {
 	const router = useRouter();
 	const handleSignup = () => {
-		router.push("/signup");
+		router.push("/create");
 	};
 	return (
 		<section className="py-16 bg-purple rounded-xl">

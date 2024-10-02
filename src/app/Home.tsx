@@ -20,9 +20,9 @@ const Home = () => {
 	};
 	return (
 		<PageTemplate
-			title="Create your Halloween message and Share it with a video!"
-			description="Create a personalized Booo! page that shows a video and a greeting
-						this Halloween."
+			title="Surprise friends and family with a personalized holiday page!"
+			description="Create a personalized Booo page that shows a video and a greeting
+						this holiday season."
 		>
 			<Container>
 				<div className="text-center space-y-6">
