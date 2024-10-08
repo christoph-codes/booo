@@ -29,6 +29,7 @@ const Login = () => {
 		<PageTemplate
 			title="Login"
 			description="Enter your credentials to access your account and manage your holiday messages."
+			noBottomPadding
 		>
 			<Container size="md">
 				<form onSubmit={login} className="flex flex-col gap-4">

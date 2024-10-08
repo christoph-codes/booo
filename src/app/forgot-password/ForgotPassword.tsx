@@ -28,6 +28,7 @@ const ForgotPassword = () => {
 		<PageTemplate
 			title="Reset Your Password"
 			description="Need to reset your password? No problem! Enter your email below and we'll send you a link to create a new one."
+			noBottomPadding
 		>
 			<Container size="md">
 				<form onSubmit={submit} className="flex flex-col gap-4">

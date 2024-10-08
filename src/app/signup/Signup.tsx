@@ -30,6 +30,7 @@ const Signup = () => {
 		<PageTemplate
 			title="Create Account"
 			description="Create your account below and get started on crafting your holiday greeting."
+			noBottomPadding
 		>
 			<Container size="md">
 				<form onSubmit={submit} className="flex flex-col gap-4">

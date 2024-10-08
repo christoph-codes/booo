@@ -27,6 +27,7 @@ const Create = () => {
 		<PageTemplate
 			title="Create Your Booo!"
 			description="Share a fun moment with family and friends!"
+			noBottomPadding
 		>
 			<Container size="md">
 				<form onSubmit={submit} className="flex flex-col gap-4">
