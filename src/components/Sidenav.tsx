@@ -4,6 +4,7 @@ import { navItems } from "@/utils/navItems";
 import Link from "next/link";
 import { BiX } from "react-icons/bi";
 import { baseButtonClasses } from "./Button";
+import { twMerge } from "tailwind-merge";
 
 export type SidenavProps = {
 	isOpen: boolean;
@@ -24,14 +25,16 @@ const Sidenav = ({ isOpen, toggleSidenav }: SidenavProps) => {
 				>
 					<BiX className="text-gray" size={42} />
 				</button>
-				<div className="p-4 flex flex-col text-right gap-y-12">
+				<div className="p-4 flex flex-col text-right gap-y-12 w-full">
 					{navItems.map((item) => (
 						<Link
-							className={`${
+							className={twMerge(
+								baseButtonClasses,
+								"text-4xl  pb-1 pt-4 border-0",
 								item.cta
 									? "bg-orange hover:bg-orange_hover "
 									: "text-white hover:text-purple"
-							} text-4xl ${baseButtonClasses} pb-1 pt-4 border-0`}
+							)}
 							onClick={toggleSidenav}
 							key={item.name}
 							href={item.href}
