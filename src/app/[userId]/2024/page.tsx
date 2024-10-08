@@ -1,11 +1,11 @@
-import Halloween2024 from "./Halloween2024";
+import Halloween2024, { User } from "./Halloween2024";
 
 export default async function Page({ params }: { params: { userId: string } }) {
 	const userId = params.userId;
 
 	// TODO: Fetch user from database
 
-	const user = {
+	const user: User = {
 		id: userId,
 		name: "Jax & Kennedy",
 		message: "Happy Halloween Family",

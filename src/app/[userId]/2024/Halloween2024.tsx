@@ -11,14 +11,14 @@ import {
 	TwitterShareButton,
 } from "react-share";
 
-interface User {
+export type User = {
 	id: string;
 	image?: string;
 	video?: string;
 	name?: string;
 	message?: string;
 	shareable: boolean;
-}
+};
 
 const Holiday2024 = ({ user }: { user: User }) => {
 	return (
