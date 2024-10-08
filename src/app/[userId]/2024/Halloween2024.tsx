@@ -1,41 +1,51 @@
-"use client";
-
+import BouncingGhosts from "@/components/BouncingGhosts";
 import Image from "next/image";
+import {
+	BiLogoFacebookCircle,
+	BiLogoTwitter,
+	BiMailSend,
+} from "react-icons/bi";
 import {
 	EmailShareButton,
 	FacebookShareButton,
 	TwitterShareButton,
 } from "react-share";
-import {
-	BiLogoFacebookCircle,
-	BiMailSend,
-	BiLogoTwitter,
-} from "react-icons/bi";
-import BouncingGhosts from "@/components/BouncingGhosts";
 
-const Home = () => {
-	const shareable = false;
-	const name = "Jax & Kennedy";
-	const image = "";
-	const video = "/happy_halloween_2023.MOV";
+interface User {
+	id: string;
+	image?: string;
+	video?: string;
+	name?: string;
+	message?: string;
+	shareable: boolean;
+}
 
+const Holiday2024 = ({ user }: { user: User }) => {
 	return (
-		<div className="text-center">
+		<div className="text-center min-h-[70vh] flex flex-col items-center justify-center">
 			<div className="max-w-3xl mx-auto">
-				<h1 className="md:text-huge/[120px] text-[110px]/[100px] text-orange mb-8">
-					Booo!
+				<h1 className="text-white mb-1">
+					{user.message} from{" "}
+					{user.name ? (
+						<>
+							<br />
+							<span className="text-orange">{user.name}!</span>
+						</>
+					) : (
+						"Booo!"
+					)}
 				</h1>
 
-				{image && (
+				{user.image && (
 					<Image
 						width="800"
 						height="500"
 						className="inline-block rounded-lg w-full"
-						src={image}
-						alt={`${name}'s Booo picture`}
+						src={user.image}
+						alt={`${user.name}'s Booo picture`}
 					/>
 				)}
-				{video && (
+				{user.video && (
 					<video
 						className="inline"
 						width="640"
@@ -44,16 +54,12 @@ const Home = () => {
 						controlsList="nodownload"
 						autoPlay
 					>
-						<source src={video} type="video/mp4" />
+						<source src={user.video} type="video/mp4" />
 						Your browser does not support the video tag.
 					</video>
 				)}
 				<BouncingGhosts />
-				<p className="text-3xl md:text-5xl mt-8">
-					Happy Halloween from <br />
-					<span className="text-purple">{name}</span>
-				</p>
-				{shareable && typeof window !== "undefined" && (
+				{user.shareable && typeof window !== "undefined" && (
 					<>
 						<p className="text-xl mb-4">Share:</p>
 						<div className="flex justify-center items-center gap-x-4">
@@ -85,4 +91,4 @@ const Home = () => {
 	);
 };
 
-export default Home;
+export default Holiday2024;
