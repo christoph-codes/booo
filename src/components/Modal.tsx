@@ -51,7 +51,7 @@ const Modal = ({
 				>
 					X
 				</Button>
-				{title && <h2>{title}</h2>}
+				{title && <h2 className="text-5xl">{title}</h2>}
 				{description && <p>{description}</p>}
 				<div className="flex justify-center gap-4">
 					<Button
