@@ -53,7 +53,6 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
 
 	const createAccount = useCallback(
 		(email: string, password: string, displayName: string) => {
-			console.log("creating account");
 			setLoading(true);
 			return new Promise<void>((resolve, reject) => {
 				createUserWithEmailAndPassword(auth, email, password)
@@ -84,7 +83,6 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
 	);
 
 	const login = useCallback((email: string, password: string) => {
-		console.log("logging in");
 		setLoading(true);
 		return new Promise<void>((resolve, reject) => {
 			signInWithEmailAndPassword(auth, email, password)
@@ -108,7 +106,6 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
 	}, []);
 
 	const logout = useCallback(async () => {
-		console.log("logging out");
 		setLoading(true);
 		return new Promise<void>((resolve, reject) => {
 			signOut(auth)

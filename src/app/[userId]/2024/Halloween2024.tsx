@@ -17,11 +17,7 @@ import {
 	BiLogoTwitter,
 	BiMailSend,
 } from "react-icons/bi";
-import {
-	EmailShareButton,
-	FacebookShareButton,
-	TwitterShareButton,
-} from "react-share";
+import { FacebookShareButton, TwitterShareButton } from "react-share";
 import { twMerge } from "tailwind-merge";
 
 export type BoooData = {

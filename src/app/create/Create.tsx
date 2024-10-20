@@ -81,7 +81,6 @@ const Create = () => {
 				return uploadQRCode(val, year, user.uid)
 					.then((snapshot) => {
 						if (snapshot) {
-							console.log("Uploaded a data_url string!");
 							return snapshot;
 						}
 					})
@@ -101,7 +100,7 @@ const Create = () => {
 					userId: user?.uid,
 				} as BoooData)
 					.then(() => {
-						console.log("Document successfully written!");
+						console.log("Booo successfully created!");
 						router.push(`/${user?.uid}/${year}`);
 					})
 					.catch((error) => {
