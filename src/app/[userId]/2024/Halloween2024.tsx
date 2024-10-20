@@ -1,4 +1,5 @@
 import BouncingGhosts from "@/components/BouncingGhosts";
+import Video from "@/components/Video";
 import {
 	BiLogoFacebookCircle,
 	BiLogoTwitter,
@@ -37,20 +38,7 @@ const Holiday2024 = ({ booo }: Halloween2024Props) => {
 						"Booo!"
 					)}
 				</h1>
-
-				{booo.video && (
-					<video
-						className="inline"
-						width="640"
-						height="480"
-						controls
-						controlsList="nodownload"
-						autoPlay
-					>
-						<source src={booo.video} type="video/mp4" />
-						Your browser does not support the video tag.
-					</video>
-				)}
+				{booo.video && <Video autoPlay url={booo.video} />}
 				<BouncingGhosts />
 				{booo.shareable && typeof window !== "undefined" && (
 					<>
