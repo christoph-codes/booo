@@ -124,27 +124,21 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
 		});
 	}, [router]);
 
-	const resetPassword = useCallback(
-		(email: string) => {
-			console.log("resetting password");
-			setLoading(true);
-			return new Promise<void>((resolve, reject) => {
-				sendPasswordResetEmail(auth, email)
-					.then(() => {
-						alert("Password reset email sent!");
-						router.push("/login");
-						resolve();
-					})
-					.catch((error) => {
-						reject(error.message);
-					})
-					.finally(() => {
-						setLoading(false);
-					});
-			});
-		},
-		[router]
-	);
+	const resetPassword = useCallback((email: string) => {
+		setLoading(true);
+		return new Promise<void>((resolve, reject) => {
+			sendPasswordResetEmail(auth, email)
+				.then(() => {
+					resolve();
+				})
+				.catch((error) => {
+					reject(error.message);
+				})
+				.finally(() => {
+					setLoading(false);
+				});
+		});
+	}, []);
 
 	useEffect(() => {
 		setLoading(true);

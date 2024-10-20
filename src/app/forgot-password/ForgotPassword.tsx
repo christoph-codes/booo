@@ -4,19 +4,22 @@ import { Button } from "@/components/Button";
 import Container from "@/components/Container";
 import HR from "@/components/HR";
 import TextInput from "@/components/TextInput";
+import { useAuth } from "@/context/AuthProvider";
 import PageTemplate from "@/templates/PageTemplate";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 const ForgotPassword = () => {
 	const router = useRouter();
+	const { resetPassword } = useAuth();
 	const [email, setEmail] = useState("");
-	const [password, setPassword] = useState("");
 
 	const submit = (e: { preventDefault: () => void }) => {
 		e.preventDefault();
-		console.log("Email:", email);
-		// Implement login logic here
+		resetPassword(email).then(() => {
+			alert("Password reset email sent!");
+			router.push("/login");
+		});
 	};
 	const handleLogin = () => {
 		router.push("/login");
