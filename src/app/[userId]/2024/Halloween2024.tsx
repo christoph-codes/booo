@@ -17,6 +17,7 @@ export type BoooData = {
 	name?: string;
 	message?: string;
 	shareable: boolean;
+	year?: string;
 };
 
 export type Halloween2024Props = {

@@ -17,6 +17,7 @@ import { uploadVideo } from "@/utils/storage";
 import { addDoc, collection } from "firebase/firestore";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { BoooData } from "../[userId]/2024/Halloween2024";
 
 const Create = () => {
 	const router = useRouter();
@@ -79,8 +80,9 @@ const Create = () => {
 					message,
 					video: videoUrl,
 					year,
+					shareable: true,
 					userId: user?.uid,
-				})
+				} as BoooData)
 					.then(() => {
 						console.log("Document successfully written!");
 						router.push(`/${user?.uid}/${year}`);
