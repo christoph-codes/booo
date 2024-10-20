@@ -18,6 +18,7 @@ const config: Config = {
 				orange: "#FF5823",
 				orange_hover: "#CB3506",
 				gray: "#BFBFBF",
+				gray_black: "#1A1A1A",
 				gray_dark: "#383838",
 				gray_medium: "#929292",
 				white: "#FFFFFF",
