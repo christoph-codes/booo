@@ -25,7 +25,7 @@ const PageTemplate = ({
 				</h1>
 				{description && <p className="text-xl">{description}</p>}
 			</section>
-			<div className="min-h-[70vh]">{children}</div>
+			<div className="min-h-[70vh] overflow-x-hidden">{children}</div>
 		</main>
 	);
 };

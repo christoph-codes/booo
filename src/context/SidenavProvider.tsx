@@ -27,7 +27,7 @@ export const SidenavProvider = ({ children }: PropsWithChildren) => {
 		} else {
 			document.body.style.overflowY = "auto";
 		}
-	});
+	}, [isOpen]);
 
 	return (
 		<SidenavContext.Provider value={{ isOpen, toggleSidenav }}>

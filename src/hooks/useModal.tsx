@@ -12,7 +12,7 @@ const useModal = () => {
 		} else {
 			document.body.style.overflowY = "auto";
 		}
-	});
+	}, [isOpen]);
 
 	return { isOpen, open, close };
 };

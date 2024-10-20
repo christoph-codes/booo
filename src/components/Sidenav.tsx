@@ -14,7 +14,7 @@ export type SidenavProps = {
 const Sidenav = ({ isOpen, toggleSidenav }: SidenavProps) => {
 	return (
 		<div
-			className={`text-white bg-black absolute top-0 left-0 transition-transform ${
+			className={`text-white bg-black fixed top-0 left-0 transition-transform ${
 				isOpen ? "translate-x-0" : "translate-x-full"
 			} w-screen h-screen z-50`}
 		>
