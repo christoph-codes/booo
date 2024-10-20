@@ -68,7 +68,7 @@ const Dashboard = () => {
 							))}
 							<button
 								onClick={handleAdditionBooCreationButton}
-								className="bg-gray_black p-4 rounded-lg hover:bg-gray_dark transition-colors flex flex-col justify-center items-center"
+								className="bg-gray_black p-4 rounded-lg hover:bg-gray_dark hover:-translate-y-3 transition-all flex flex-col justify-center items-center"
 								key="2024"
 							>
 								<BiPlus size={64} className="text-gray" />
