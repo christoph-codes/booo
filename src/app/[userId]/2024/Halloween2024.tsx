@@ -13,6 +13,7 @@ import {
 
 export type BoooData = {
 	userId: string;
+	qrCodeImage?: string;
 	video?: string;
 	name?: string;
 	message?: string;
@@ -25,51 +26,48 @@ export type Halloween2024Props = {
 };
 
 const Holiday2024 = ({ booo }: Halloween2024Props) => {
+	const saveQRCodeModal = useModal();
+	const boooURL = `${process.env.NEXT_PUBLIC_ORIGIN}/${booo.userId}/${booo.year}`;
+	const handleShareButtonClick = (e: MouseEvent<HTMLButtonElement>) => {
+		e.preventDefault();
+		saveQRCodeModal.open();
+	};
+	const handlePrintQRCode = () => {
+		const printWindow = window.open(booo.qrCodeImage, "_blank");
+		printWindow?.print();
+	};
 	return (
-		<div className="text-center min-h-[70vh] flex flex-col items-center justify-center">
-			<div className="max-w-3xl mx-auto">
-				<h1 className="text-white mb-1">
-					{booo.message} from{" "}
-					{booo.name ? (
+					{booo.qrCodeImage && (
 						<>
-							<br />
-							<span className="text-orange">{booo.name}!</span>
-						</>
-					) : (
-						"Booo!"
-					)}
-				</h1>
-				{booo.video && <Video autoPlay url={booo.video} />}
-				<BouncingGhosts />
-				{booo.shareable && typeof window !== "undefined" && (
-					<>
-						<p className="text-xl mb-4">Share:</p>
-						<div className="flex justify-center items-center gap-x-4">
-							<FacebookShareButton
-								title="Check out who Boo'd me!"
-								hashtag="#Booo #HappyHalloween"
-								url={window.location.href}
-							>
-								<BiLogoFacebookCircle className="text-purple" size={64} />
-							</FacebookShareButton>
-							<TwitterShareButton
-								title="Check out who Boo'd me!"
-								url={window.location.href}
-								hashtags={["Booo", "HappyHalloween"]}
-							>
-								<BiLogoTwitter className="text-purple" size={64} />
-							</TwitterShareButton>
-							<EmailShareButton
-								subject="Check out who Boo'd me!"
-								url={window.location.href}
-							>
-								<BiMailSend className="text-purple" size={64} />
-							</EmailShareButton>
-						</div>
-					</>
-				)}
-			</div>
-		</div>
+							<p>or save the QR code</p>
+							<Image
+								src={booo.qrCodeImage}
+								width={200}
+								height={200}
+								alt="2024 Booo Page QR Code"
+							/>
+							<div className="flex gap-4">
+								<Link
+									href={booo.qrCodeImage}
+									download="2024_Booo_QR_Code.png"
+									target="_blank"
+									className={twMerge(
+										baseButtonClasses,
+										buttonSizes["lg"],
+										buttonVariants["secondary"],
+										"cursor-pointer"
+									)}
+								>
+									Download
+								</Link>
+								<Button
+									size="lg"
+									variant="secondary"
+									onClick={handlePrintQRCode}
+								>
+									Print
+								</Button>
+							</div>
 	);
 };
 

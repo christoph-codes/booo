@@ -13,7 +13,8 @@ import { useAuth } from "@/context/AuthProvider";
 import useModal from "@/hooks/useModal";
 import PageTemplate from "@/templates/PageTemplate";
 import { db } from "@/utils/firebase";
-import { uploadVideo } from "@/utils/storage";
+import QRCode from "qrcode";
+import { uploadQRCode, uploadVideo } from "@/utils/storage";
 import { addDoc, collection } from "firebase/firestore";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -71,9 +72,24 @@ const Create = () => {
 			setError("Please fill out all fields");
 			return;
 		}
-
 		const year = new Date().getFullYear().toString();
-		uploadVideo(video, `${user?.uid}/${year}`).then((videoUrl) => {
+		const qrCodeImage = await QRCode.toDataURL(
+			`${process.env.NEXT_PUBLIC_ORIGIN}/${user?.uid}/${year}`,
+			{ color: { dark: "#000000", light: "#ffffff" }, width: 600, margin: 2 }
+		)
+			.then(async (val) => {
+				return uploadQRCode(val, year, user.uid)
+					.then((snapshot) => {
+						if (snapshot) {
+							console.log("Uploaded a data_url string!");
+							return snapshot;
+						}
+					})
+					.catch((err) => console.error({ err }));
+			})
+			.catch((err) => console.error({ err }));
+
+		uploadVideo(video, year, user.uid).then(async (videoUrl) => {
 			if (videoUrl) {
 				addDoc(collection(db, "booos"), {
 					name,
@@ -81,6 +97,7 @@ const Create = () => {
 					video: videoUrl,
 					year,
 					shareable: true,
+					qrCodeImage,
 					userId: user?.uid,
 				} as BoooData)
 					.then(() => {
