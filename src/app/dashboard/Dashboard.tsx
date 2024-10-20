@@ -3,19 +3,12 @@
 import Container from "@/components/Container";
 import { useAuth } from "@/context/AuthProvider";
 import PageTemplate from "@/templates/PageTemplate";
+import BoooCard from "@/components/BoooCard";
 
 const Dashboard = () => {
-  const { user } = useAuth();
-  return (
-    <PageTemplate
-      title="Dashboard"
-      description={`Welcome, ${user?.displayName}`}
-    >
-      <Container className="h-full">
-        <p className="mt-auto">Dashboard content</p>
-      </Container>
-    </PageTemplate>
-  );
+							{booos.map((boo) => (
+								<BoooCard key={boo.year} booo={boo} />
+							))}
 };
 
 export default Dashboard;
