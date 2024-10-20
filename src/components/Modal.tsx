@@ -1,27 +1,30 @@
-import { BiX } from "react-icons/bi";
 import { Button } from "./Button";
-import { MouseEvent } from "react";
+import { MouseEvent, ReactNode } from "react";
 
 export type ModalProps = {
 	title: string;
 	description?: string;
+	success?: boolean;
 	cancel?: boolean;
 	onClose?: VoidFunction;
 	onSuccess?: VoidFunction;
 	successLabel?: string;
 	variant?: "default" | "danger";
 	isOpen: boolean;
+	children?: ReactNode;
 };
 
 const Modal = ({
 	title,
 	description,
+	success = true,
 	cancel = true,
 	onClose,
 	onSuccess,
 	successLabel = "Confirm",
 	variant = "default",
 	isOpen = false,
+	children,
 }: ModalProps) => {
 	const handleSuccessButton = () => {
 		onSuccess?.();
@@ -53,13 +56,16 @@ const Modal = ({
 				</Button>
 				{title && <h2 className="text-5xl">{title}</h2>}
 				{description && <p>{description}</p>}
+				{children && <div className="py-2">{children}</div>}
 				<div className="flex justify-center gap-4">
-					<Button
-						variant={variant === "danger" ? "error" : undefined}
-						onClick={handleSuccessButton}
-					>
-						{successLabel}
-					</Button>
+					{success && (
+						<Button
+							variant={variant === "danger" ? "error" : undefined}
+							onClick={handleSuccessButton}
+						>
+							{successLabel}
+						</Button>
+					)}
 					{cancel && (
 						<Button variant="secondary" onClick={onClose}>
 							Cancel
