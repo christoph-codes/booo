@@ -1,18 +1,24 @@
-import Halloween2024, { User } from "./Halloween2024";
+import { collection, getDocs, query, where } from "firebase/firestore";
+import Halloween2024, { BoooData } from "./Halloween2024";
+import { db } from "@/utils/firebase";
 
 export default async function Page({ params }: { params: { userId: string } }) {
 	const userId = params.userId;
+	const year = "2024";
 
-	// TODO: Fetch user from database
+	const collectionRef = collection(db, "booos");
+	const q = query(
+		collectionRef,
+		where("userId", "==", userId),
+		where("year", "==", year)
+	);
 
-	const user: User = {
-		id: userId,
-		name: "Jax & Kennedy",
-		message: "Happy Halloween Family",
-		image: "",
-		video: "/happy_halloween_2023.MOV",
-		shareable: false,
-	};
+	const querySnapshot = await getDocs(q);
+	const boooData = querySnapshot.docs[0]?.data() as BoooData;
 
-	return <Halloween2024 user={user} />;
+	if (!boooData) {
+		throw new Error("No Booo found here!");
+	}
+
+	return <Halloween2024 booo={boooData} />;
 }
