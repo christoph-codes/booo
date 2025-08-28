@@ -17,7 +17,7 @@ import {
 	BiLogoTwitter,
 	BiMailSend,
 } from "react-icons/bi";
-import { FacebookShareButton, TwitterShareButton } from "react-share";
+// import { FacebookShareButton, TwitterShareButton } from "react-share";
 import { twMerge } from "tailwind-merge";
 
 export type BoooData = {
@@ -54,7 +54,9 @@ const Holiday2024 = ({ booo }: Halloween2024Props) => {
 						{booo.name ? (
 							<>
 								<br />
-								<span className="text-orange">{booo.name}!</span>
+								<span className="text-orange">
+									{booo.name}!
+								</span>
 							</>
 						) : (
 							"Booo!"
@@ -83,11 +85,14 @@ const Holiday2024 = ({ booo }: Halloween2024Props) => {
 				<div className="flex flex-col items-center mt-6 gap-y-4">
 					<p>Share to social media</p>
 					<div className="flex justify-center items-center gap-x-8 pb-8 border-b border-b-gray_dark w-full">
-						<FacebookShareButton
+						{/* <FacebookShareButton
 							hashtag="Check out who Boo'd me! #Booo #HappyHalloween"
 							url={boooURL}
 						>
-							<BiLogoFacebookCircle className="text-purple" size={48} />
+							<BiLogoFacebookCircle
+								className="text-purple"
+								size={48}
+							/>
 						</FacebookShareButton>
 						<TwitterShareButton
 							title="Check out who Boo'd me!"
@@ -95,10 +100,13 @@ const Holiday2024 = ({ booo }: Halloween2024Props) => {
 							hashtags={["Booo", "HappyHalloween"]}
 						>
 							<BiLogoTwitter className="text-purple" size={48} />
-						</TwitterShareButton>
+						</TwitterShareButton> */}
 						<Link
 							href={`mailto:cjones@thekirkconcept.com?subject=Check out who Boo'd you!&body=You just got Boo'd by ${booo.name}! Check it out at ${boooURL}`}
-							className={twMerge(buttonVariants["ghost"], "cursor-pointer")}
+							className={twMerge(
+								buttonVariants["ghost"],
+								"cursor-pointer",
+							)}
 						>
 							<BiMailSend className="text-purple" size={48} />
 						</Link>
@@ -121,7 +129,7 @@ const Holiday2024 = ({ booo }: Halloween2024Props) => {
 										baseButtonClasses,
 										buttonSizes["lg"],
 										buttonVariants["secondary"],
-										"cursor-pointer"
+										"cursor-pointer",
 									)}
 								>
 									Download

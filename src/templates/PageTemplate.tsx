@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 
-export type PageProps = {
+export type PageTemplateProps = {
 	title: string;
 	description?: string;
 	children: ReactNode;
@@ -12,7 +12,7 @@ const PageTemplate = ({
 	title,
 	description,
 	noBottomPadding,
-}: PageProps) => {
+}: PageTemplateProps) => {
 	return (
 		<main className="flex w-full flex-col bg-center">
 			<section
