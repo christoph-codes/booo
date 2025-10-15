@@ -198,7 +198,7 @@ const EditBooo = ({ userId, year }: EditBoooProps) => {
 					<div className="text-center">
 						<h2 className="text-2xl mb-4">Booo Not Found</h2>
 						<p className="mb-4">
-							This Booo doesn't exist or you don't have permission to edit it.
+							{`This Booo doesn't exist or you don't have permission to edit it.`}
 						</p>
 						<Button onClick={() => router.push("/create")}>
 							Create New Booo
