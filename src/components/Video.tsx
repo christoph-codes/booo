@@ -17,11 +17,15 @@ const Video = ({
 	height = 480,
 	className,
 }: VideoProps) => {
+	// Don't set width/height if className includes responsive classes
+	const isResponsive =
+		className?.includes("w-full") || className?.includes("h-full");
+
 	return (
 		<video
 			className={twMerge("inline", className)}
-			width={width}
-			height={height}
+			width={isResponsive ? undefined : width}
+			height={isResponsive ? undefined : height}
 			controls={controls}
 			controlsList="nodownload"
 			autoPlay={autoPlay}

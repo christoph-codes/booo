@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@tailwindcss/line-clamp": "^0.4.4",
     "firebase": "^10.14.1",
     "next": "15.5.2",
     "qrcode": "^1.5.4",

@@ -9,6 +9,7 @@ import {
 import Modal from "@/components/Modal";
 import Video from "@/components/Video";
 import useModal from "@/hooks/useModal";
+import { useAuth } from "@/context/AuthProvider";
 import Image from "next/image";
 import Link from "next/link";
 import { MouseEvent } from "react";
@@ -16,6 +17,7 @@ import {
 	BiLogoFacebookCircle,
 	BiLogoTwitter,
 	BiMailSend,
+	BiEdit,
 } from "react-icons/bi";
 import { twMerge } from "tailwind-merge";
 
@@ -35,7 +37,9 @@ export type Halloween2025Props = {
 
 const Halloween2025 = ({ booo }: Halloween2025Props) => {
 	const saveQRCodeModal = useModal();
+	const { user } = useAuth();
 	const boooURL = `${process.env.NEXT_PUBLIC_ORIGIN}/${booo.userId}/${booo.year}`;
+	const isOwner = user?.uid === booo.userId;
 
 	const handleShareButtonClick = (e: MouseEvent<HTMLButtonElement>) => {
 		e.preventDefault();
@@ -95,6 +99,15 @@ const Halloween2025 = ({ booo }: Halloween2025Props) => {
 					>
 						🎃 Share the Fun! 🎃
 					</Button>
+					{isOwner && (
+						<Button
+							className="block mt-3"
+							variant="ghost"
+							href={`/${booo.userId}/${booo.year}/edit`}
+						>
+							Edit
+						</Button>
+					)}
 				</div>
 			</div>
 

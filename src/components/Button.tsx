@@ -1,9 +1,11 @@
 import { ButtonHTMLAttributes, forwardRef, ReactNode } from "react";
 import { twMerge } from "tailwind-merge";
+import Link from "next/link";
 
 export type ButtonProps = {
 	children: ReactNode;
 	className?: string;
+	href?: string;
 	variant?:
 		| "primary"
 		| "secondary"
@@ -35,23 +37,42 @@ export const buttonSizes = {
 };
 
 export const Button = forwardRef<
-	HTMLButtonElement,
+	HTMLButtonElement | HTMLAnchorElement,
 	ButtonProps & ButtonHTMLAttributes<HTMLButtonElement>
->(({ children, className, variant = "primary", size = "lg", ...rest }, ref) => {
-	return (
-		<button
-			{...rest}
-			ref={ref}
-			className={twMerge(
-				baseButtonClasses,
-				buttonVariants[variant] ?? "",
-				buttonSizes[size] ?? "",
-				className
-			)}
-		>
-			{children}
-		</button>
-	);
-});
+>(
+	(
+		{ children, className, href, variant = "primary", size = "lg", ...rest },
+		ref
+	) => {
+		const commonClasses = twMerge(
+			baseButtonClasses,
+			buttonVariants[variant] ?? "",
+			buttonSizes[size] ?? "",
+			className
+		);
+
+		if (href) {
+			return (
+				<Link
+					href={href}
+					className={commonClasses}
+					ref={ref as React.Ref<HTMLAnchorElement>}
+				>
+					{children}
+				</Link>
+			);
+		}
+
+		return (
+			<button
+				{...rest}
+				ref={ref as React.Ref<HTMLButtonElement>}
+				className={commonClasses}
+			>
+				{children}
+			</button>
+		);
+	}
+);
 
 Button.displayName = "Button";

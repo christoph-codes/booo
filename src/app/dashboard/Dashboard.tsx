@@ -62,13 +62,13 @@ const Dashboard = () => {
 							<h2 className="text-gray">No booos yet</h2>
 						</div>
 					) : (
-						<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+						<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-fr">
 							{booos.map((boo) => (
 								<BoooCard key={boo.year} booo={boo} />
 							))}
 							<button
 								onClick={handleAdditionBooCreationButton}
-								className="bg-gray_black p-4 rounded-lg hover:bg-gray_dark hover:-translate-y-3 transition-all flex flex-col justify-center items-center"
+								className="bg-gray_black p-4 rounded-lg hover:bg-gray_dark hover:-translate-y-3 transition-all flex flex-col justify-center items-center h-full min-h-[300px]"
 								key="2024"
 							>
 								<BiPlus size={64} className="text-gray" />

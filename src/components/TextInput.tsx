@@ -38,6 +38,7 @@ const TextInput = ({
 				{...rest}
 				type={type}
 				name={name}
+				value={value}
 				onChange={(e: ChangeEvent<HTMLInputElement>) =>
 					onChange?.(e.target.value)
 				}
