@@ -9,6 +9,7 @@ import {
 import Modal from "@/components/Modal";
 import Video from "@/components/Video";
 import useModal from "@/hooks/useModal";
+import { useAuth } from "@/context/AuthProvider";
 import Image from "next/image";
 import Link from "next/link";
 import { MouseEvent } from "react";
@@ -16,6 +17,7 @@ import {
 	BiLogoFacebookCircle,
 	BiLogoTwitter,
 	BiMailSend,
+	BiEdit,
 } from "react-icons/bi";
 // import { FacebookShareButton, TwitterShareButton } from "react-share";
 import { twMerge } from "tailwind-merge";
@@ -36,7 +38,10 @@ export type Halloween2024Props = {
 
 const Holiday2024 = ({ booo }: Halloween2024Props) => {
 	const saveQRCodeModal = useModal();
+	const { user } = useAuth();
 	const boooURL = `${process.env.NEXT_PUBLIC_ORIGIN}/${booo.userId}/${booo.year}`;
+	const isOwner = user?.uid === booo.userId;
+
 	const handleShareButtonClick = (e: MouseEvent<HTMLButtonElement>) => {
 		e.preventDefault();
 		saveQRCodeModal.open();
@@ -47,16 +52,26 @@ const Holiday2024 = ({ booo }: Halloween2024Props) => {
 	};
 	return (
 		<>
-			<div className="text-center min-h-[70vh] flex flex-col items-center justify-center">
+			<div className="text-center min-h-[70vh] flex flex-col items-center justify-center relative">
+				{/* Edit button for owner */}
+				{isOwner && (
+					<div className="absolute top-4 right-4 z-20">
+						<Link
+							href={`/${booo.userId}/${booo.year}/edit`}
+							className="bg-purple hover:bg-purple_hover text-white p-3 rounded-full shadow-lg transition-colors"
+						>
+							<BiEdit size={24} />
+						</Link>
+					</div>
+				)}
+
 				<div className="max-w-3xl mx-auto mt-16">
 					<h1 className="text-white mb-1">
 						{booo.message} from{" "}
 						{booo.name ? (
 							<>
 								<br />
-								<span className="text-orange">
-									{booo.name}!
-								</span>
+								<span className="text-orange">{booo.name}!</span>
 							</>
 						) : (
 							"Booo!"
@@ -103,10 +118,7 @@ const Holiday2024 = ({ booo }: Halloween2024Props) => {
 						</TwitterShareButton> */}
 						<Link
 							href={`mailto:cjones@thekirkconcept.com?subject=Check out who Boo'd you!&body=You just got Boo'd by ${booo.name}! Check it out at ${boooURL}`}
-							className={twMerge(
-								buttonVariants["ghost"],
-								"cursor-pointer",
-							)}
+							className={twMerge(buttonVariants["ghost"], "cursor-pointer")}
 						>
 							<BiMailSend className="text-purple" size={48} />
 						</Link>
@@ -129,7 +141,7 @@ const Holiday2024 = ({ booo }: Halloween2024Props) => {
 										baseButtonClasses,
 										buttonSizes["lg"],
 										buttonVariants["secondary"],
-										"cursor-pointer",
+										"cursor-pointer"
 									)}
 								>
 									Download

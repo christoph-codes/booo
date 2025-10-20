@@ -113,7 +113,10 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
 					// Sign-out successful.
 					setLoggedIn(false);
 					resolve();
-					router.push("/login");
+					// Use setTimeout to avoid setState during render
+					setTimeout(() => {
+						router.push("/login");
+					}, 0);
 				})
 				.catch((error) => {
 					reject(error.message);
